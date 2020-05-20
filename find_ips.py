@@ -1,13 +1,29 @@
 """
-This python script finds all files in ip_files directory and its sub directories.
-ip_files directory must be located at same level as this script file and
-prints in sorted order all valid ip addresses
+This python script parses all files in a directory (passed as argument) and its subdirectories and
+prints all valid IP addresses found in the files in sorted order.
+If directory name is not passed it will parse all files in the current directory and its subdirectories.
+
+Usage: find_ip.py [-h] [DIR]
+
+Arguments:
+  DIR directory containing files to parse
+
+Options:
+  -h --help
 """
-from pathlib import Path
+
 import re
+from pathlib import Path
+from docopt import docopt
 
 ip_candidates = []
 text_content = ""
+SEARCH_DIR = "."
+
+if __name__ == '__main__':
+    arguments = docopt(__doc__)
+    if arguments["DIR"] != None:
+        SEARCH_DIR = arguments["DIR"]
 
 def find_ip_in_text(text):
     return re.findall(r"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b", text)
@@ -22,7 +38,7 @@ def find_all_ip_in_dir(dir_name):
        elif entry.is_dir():
            find_all_ip_in_dir(entry)
 
-find_all_ip_in_dir('ip_files')
+find_all_ip_in_dir(SEARCH_DIR)
 
 for ip in sorted(ip_candidates):
     print(ip)
