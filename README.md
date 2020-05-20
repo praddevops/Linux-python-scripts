@@ -1,2 +1,3 @@
-# Linux-scripts
-collection of linux scripts for quick reference
+# Linux-python-scripts
+
+Simple and fun scripts in shell/bash, python scripts
