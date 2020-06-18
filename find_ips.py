@@ -3,10 +3,12 @@ This python script parses all files in a directory (passed as argument) and its 
 prints all valid IP addresses found in the files in sorted order.
 If directory name is not passed it will parse all files in the current directory and its subdirectories.
 
-Usage: find_ip.py [-h] [<DIR>]
+Usage: 
+   find_ip.py [<DIR>]
+   find_ip.py -h | --help
 
 Options:
-  -h --help
+  -h --help  Show this screen.
 """
 
 import re
