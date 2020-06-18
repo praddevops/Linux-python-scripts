@@ -3,10 +3,7 @@ This python script parses all files in a directory (passed as argument) and its 
 prints all valid IP addresses found in the files in sorted order.
 If directory name is not passed it will parse all files in the current directory and its subdirectories.
 
-Usage: find_ip.py [-h] [DIR]
-
-Arguments:
-  DIR directory containing files to parse
+Usage: find_ip.py [-h] [<DIR>]
 
 Options:
   -h --help
@@ -22,8 +19,8 @@ SEARCH_DIR = "."
 
 if __name__ == '__main__':
     arguments = docopt(__doc__)
-    if arguments["DIR"] != None:
-        SEARCH_DIR = arguments["DIR"]
+    if arguments["<DIR>"] != None:
+        SEARCH_DIR = arguments["<DIR>"]
 
 def find_ip_in_text(text):
     return re.findall(r"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b", text)
